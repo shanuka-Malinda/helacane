@@ -26,7 +26,8 @@ public class SecurityConfig {
                         "/swagger-ui/**",
                         "/v3/api-docs/**",
                         "/api/user/registerNewUser",
-                        "/requestOrderSave"
+                        "/requestOrderSave",
+                        "/estimate/repairPrice"
                 ).authenticated()
                 .anyRequest().permitAll()
                 .and()
