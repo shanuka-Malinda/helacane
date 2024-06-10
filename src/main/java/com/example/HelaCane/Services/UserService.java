@@ -14,4 +14,5 @@ public interface UserService {
     CommonResponse updateUser(UserDto userDto);
 
     UserEntity findById(Long id);
+    UserDto findByIdForGet(Long id);
 }

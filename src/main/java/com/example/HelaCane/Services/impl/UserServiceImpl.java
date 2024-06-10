@@ -106,10 +106,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserEntity findById(Long id) {
-        return userRepo.findById(id).orElse(null);
+        UserEntity userEntity=userRepo.findById(id).orElse(null);
+        return userEntity;
+    }
+    @Override
+    public UserDto findByIdForGet(Long id) {
+        UserEntity userEntity=userRepo.findById(id).orElse(null);
+        return castUserEntityToDto(userEntity);
     }
 
-    private UserDto castUserEntityToDto(UserEntity userEntity) {
+     private String getCurrentDate(){
+        return LocalDate.now().toString();
+     }
+    public UserDto castUserEntityToDto(UserEntity userEntity) {
         UserDto userDto=new UserDto();
         userDto.setId(userEntity.getId().toString());
         userDto.setUserName(userEntity.getUserName());

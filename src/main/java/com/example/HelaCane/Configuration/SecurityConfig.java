@@ -25,7 +25,8 @@ public class SecurityConfig {
                 .antMatchers(
                         "/swagger-ui/**",
                         "/v3/api-docs/**",
-                        "/api/user/registerNewUser"
+                        "/api/user/registerNewUser",
+                        "/requestOrderSave"
                 ).authenticated()
                 .anyRequest().permitAll()
                 .and()

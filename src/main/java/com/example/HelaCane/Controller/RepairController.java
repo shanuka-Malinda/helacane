@@ -20,4 +20,13 @@ public class RepairController {
     public CommonResponse requestOrderSave(@RequestBody RepairsDto repairsDto){
         return repairService.saveRepairRequest(repairsDto);
     }
+    @GetMapping("/getAll")
+    public CommonResponse getAllRepairs() {
+        return repairService.getAllRepairs();
+    }
+
+    @PutMapping("/updateOrderStatus/{repairId}")
+    public CommonResponse updateOrderStatus(@PathVariable Long repairId, @RequestParam String newStatus) {
+        return repairService.updateOrderStatus(repairId, newStatus);
+    }
 }
