@@ -13,4 +13,6 @@ public class MailDto {
     private String body;
     private String orderId;
     private String customizeId;
+    private String OTP;
+
 }

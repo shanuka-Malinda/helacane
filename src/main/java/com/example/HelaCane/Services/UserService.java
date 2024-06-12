@@ -11,6 +11,8 @@ public interface UserService {
 
     boolean userNameExists(String username);
 
+    boolean emailExits(String email);
+
     CommonResponse updateUser(UserDto userDto);
 
     UserEntity findById(Long id);

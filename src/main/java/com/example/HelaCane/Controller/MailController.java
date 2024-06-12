@@ -1,6 +1,7 @@
 package com.example.HelaCane.Controller;
 
 import com.example.HelaCane.Dto.MailDto;
+import com.example.HelaCane.Util.CommonResponse;
 import com.example.HelaCane.Util.MailUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -27,5 +28,10 @@ public class MailController {
         String customizeId=data.getCustomizeId();
         mailUtil.sendCustomizationConformation(sendMail,customizeId);
         return data;
+    }
+
+    @PostMapping("/resetPassword")
+    public CommonResponse resetPassword(@RequestBody MailDto data){
+        return mailUtil.resetPassword(data);
     }
 }

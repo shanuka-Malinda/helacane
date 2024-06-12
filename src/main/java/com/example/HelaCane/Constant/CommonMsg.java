@@ -15,4 +15,7 @@ public class CommonMsg {
     public static final String EMPTY_PRODUCT_DESCRIPTION="Product Description Empty";
 
     public static final String EMPTY_USERNAME = "Empty username";
+    public static final String EMPTY_NAME = "Empty product name";
+    public static final String EMPTY_PRODUCT_PRICE = "Empty product price";
+    public static final String EMPTY_USERID = "Empty user id";
 }

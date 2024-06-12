@@ -1,10 +1,8 @@
 package com.example.HelaCane.Entity;
 
 import com.example.HelaCane.Constant.CommonStatus;
-import com.example.HelaCane.Constant.Role;
-import lombok.AllArgsConstructor;
+import com.example.HelaCane.Util.CommonResponse;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -12,37 +10,32 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Table(name = "product")
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@Table(name="user")
-public class UserEntity {
+public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column
-    private String userName;
+    private String name;
 
     @Column
-    private String email;
+    private String description;
 
     @Column
-    private String tel;
+    private String imgUrl;
 
     @Column
-    private String regDate;
+    private Integer quantity;
 
     @Column
-    private String password;
-
-    @Enumerated
-    private Role role;
+    private Double unitPrice;
 
     @Enumerated
     private CommonStatus commonStatus;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
     private Set<CartEntity> Cart = new HashSet<>();
 }

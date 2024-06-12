@@ -77,6 +77,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public boolean emailExits(String email) {
+        return userRepo.exitByEmail(email);
+    }
+
+    @Override
     public CommonResponse updateUser(UserDto userDto) {
         CommonResponse commonResponse=new CommonResponse();
         UserEntity userEntity;
@@ -161,6 +166,9 @@ public class UserServiceImpl implements UserService {
         }
         if (CommonValidation.stringNullValidation(userDto.getRegDate())){
             validationList.add(CommonMsg.EMPTY_DATE);
+        }
+        if(CommonValidation.isValidEmail(userDto.getEmail())){
+            validationList.add(CommonMsg.INVALID_EMAIL);
         }
         if (CommonValidation.stringNullValidation(userDto.getTel())){
             validationList.add(CommonMsg.EMPTY_USERNAME);
