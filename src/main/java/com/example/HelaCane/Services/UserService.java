@@ -17,4 +17,6 @@ public interface UserService {
 
     UserEntity findById(Long id);
     UserDto findByIdForGet(Long id);
+
+    CommonResponse deleteUser(UserDto userDto);
 }

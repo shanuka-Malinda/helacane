@@ -41,4 +41,9 @@ public class UserController {
     public UserEntity findUserByID(@RequestParam Long id){
         return userService.findById(id);
     }
+
+    @PostMapping("deleteUserAccount")
+    public CommonResponse deleteUser(@RequestBody UserDto userDto){
+        return userService.deleteUser(userDto);
+    }
 }

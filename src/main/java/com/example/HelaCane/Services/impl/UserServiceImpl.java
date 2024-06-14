@@ -120,7 +120,33 @@ public class UserServiceImpl implements UserService {
         return castUserEntityToDto(userEntity);
     }
 
-     private String getCurrentDate(){
+    @Override
+    public CommonResponse deleteUser(UserDto userDto) {
+        CommonResponse commonResponse=new CommonResponse();
+        UserEntity userEntity;
+        try{
+            List<String> validationList=this.UserValidation(userDto);
+            if (!validationList.isEmpty()) {
+                commonResponse.setErrorMessages(validationList);
+                return commonResponse;
+            }
+            userEntity=userRepo.findById(Long.valueOf(userDto.getId())).get();
+            if(userEntity!=null){
+                userEntity.setCommonStatus(CommonStatus.DELETE);
+                userRepo.save(userEntity);
+                commonResponse.setStatus(true);
+            }else {
+                commonResponse.setErrorMessages(Collections.singletonList("Profile not found"));
+            }
+        }catch (Exception e){
+            LOGGER.error("/**************** Exception in UserService -> deleteUser()", e);
+            commonResponse.setStatus(false);
+            commonResponse.setErrorMessages(Collections.singletonList("An error occurred while deleting the user."));
+        }
+        return commonResponse;
+    }
+
+    private String getCurrentDate(){
         return LocalDate.now().toString();
      }
     public UserDto castUserEntityToDto(UserEntity userEntity) {
